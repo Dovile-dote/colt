@@ -28,6 +28,7 @@ function Pasp({ paspirtukas }) {
           </p>
 
           <b>Last use time: {paspirtukas.lastUseTime}</b>
+          <b>COLOR: {paspirtukas.color}</b>
         </div>
         <div className="busy">
           <b>{paspirtukas.isBusy ? 'Available' : 'Busy'}</b>
