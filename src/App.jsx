@@ -10,7 +10,6 @@ import CreateColors from './Components/colors/Create';
 
 function App() {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
-  // /////////////////2.12min, pabaigti colorus//////////////////
 
   ///////////////////PASAPIRTUKAI/////////////////////
   const [paspirtukai, setPaspirtukai] = useState(null);
