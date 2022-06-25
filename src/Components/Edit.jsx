@@ -2,11 +2,13 @@ import { useEffect, useState, useContext } from 'react';
 import ColtContext from './ColtContext';
 
 function Edit() {
-  const { modalData, setModalData, setEditData } = useContext(ColtContext);
+  const { modalData, setModalData, setEditData, colors } =
+    useContext(ColtContext);
   const [registrationCode, setRegistrationCode] = useState('');
   const [isBusy, setIsBusy] = useState(1);
   const [lastUseTime, setLastUseTime] = useState('');
   const [totalRideKilometres, setTotalRideKilometres] = useState(0);
+  const [color, setColor] = useState('0');
 
   useEffect(() => {
     if (null === modalData) {
@@ -16,6 +18,7 @@ function Edit() {
     setIsBusy(modalData.isBusy);
     setLastUseTime(modalData.lastUseTime);
     setTotalRideKilometres('');
+    setColor(colors.filter((g) => modalData.color === g.color)[0]?.id ?? 0);
   }, [modalData]);
 
   const handleEdit = () => {
@@ -25,6 +28,7 @@ function Edit() {
       lastUseTime,
       totalRideKilometres:
         Number(modalData.totalRideKilometres) + Number(totalRideKilometres),
+      color,
       id: modalData.id,
     };
 
@@ -84,7 +88,21 @@ function Edit() {
             />
             <span>km</span>
           </div>
-
+          <div className="selektas">
+            <label>COLOR</label>
+            <select onChange={(e) => setColor(e.target.value)} value={color}>
+              <option value="0" disabled>
+                Select Color
+              </option>
+              {colors
+                ? colors.map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.color}
+                    </option>
+                  ))
+                : null}
+            </select>
+          </div>
           <div>
             BUSY
             <input

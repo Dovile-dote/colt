@@ -7,6 +7,7 @@ import ColtContext from './Components/ColtContext';
 import axios from 'axios';
 import ColorContext from './Components/colors/ColorContext';
 import CreateColors from './Components/colors/Create';
+import ListColors from './Components/colors/List';
 
 function App() {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
@@ -22,6 +23,7 @@ function App() {
   ///////////////////SPALVOS/////////////////////
   const [colors, setColors] = useState(null);
   const [colorsCreateData, setColorsCreateData] = useState(null);
+  const [colorsDeleteData, setColorsDeleteData] = useState(null);
 
   ///////////////////PASAPIRTUKAI/////////////////////
   // read
@@ -73,6 +75,16 @@ function App() {
       .then((res) => setColors(res.data));
   }, [lastUpdate]);
 
+  // delete colors
+  useEffect(() => {
+    if (null === colorsDeleteData) return;
+    axios
+      .delete('http://localhost:3003/spalvos/' + colorsDeleteData.id)
+      .then((_) => {
+        setLastUpdate(Date.now());
+      });
+  }, [colorsDeleteData]);
+
   //////////////KITA/////////////////////
   // statistic
   useEffect(() => {
@@ -98,6 +110,8 @@ function App() {
       <ColorContext.Provider
         value={{
           setCreateData: setColorsCreateData,
+          colors,
+          setDeleteData: setColorsDeleteData,
         }}
       >
         <div className="fonas">
@@ -121,6 +135,7 @@ function App() {
                   </h3>
                 </div>{' '}
                 <CreateColors />
+                <ListColors />
               </div>
               <div className="list">
                 {/* <div className={paspirtukai !== null ? 'list' : 'nera'}> */}
