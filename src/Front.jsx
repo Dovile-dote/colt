@@ -41,9 +41,18 @@ function Front() {
         setCreateComment,
       }}
     >
-      <div>
-        <FrontList />
-        <ColtList />
+      <div className="fonas front">
+        <div className="App">
+          <h1>Colt</h1>
+          <div className="main">
+            <div className="order">
+              <FrontList />
+            </div>
+            <div className="list">
+              <ColtList />
+            </div>
+          </div>
+        </div>
       </div>
     </FrontContext.Provider>
   );

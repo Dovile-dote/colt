@@ -76,15 +76,14 @@ function Create() {
       <div className="rodykle">
         <div className="kv">
           <h2>
-            CLICK <br /> THE <br />
-            BUTTON!
+            Select <br /> Colt <br />
+            Color!
           </h2>
         </div>
         <div className="tr"></div>
       </div>
       <div>
         <div className="selektas">
-          <label>COLOR</label>
           <select onChange={(e) => setColor(e.target.value)} value={color}>
             <option value="0" disabled>
               Select Color
@@ -92,13 +91,13 @@ function Create() {
             {colors
               ? colors.map((c) => (
                   <option key={c.id} value={c.id}>
-                    {c.color}
+                    <p>{c.color}</p>
                   </option>
                 ))
               : null}
           </select>
         </div>
-        <button onClick={handleCreate}>
+        <button className="pagr" onClick={handleCreate}>
           <span>NEW COLT</span>
         </button>
       </div>

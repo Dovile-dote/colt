@@ -19,7 +19,6 @@ function Pasp({ paspirtukas }) {
         <div>
           <p>
             {' '}
-            <b>{paspirtukas.id}. </b>
             <b>Registration code: {paspirtukas.registrationCode}</b>
           </p>
           <p>
@@ -28,7 +27,13 @@ function Pasp({ paspirtukas }) {
           </p>
 
           <b>Last use time: {paspirtukas.lastUseTime}</b>
-          <b style={{ color: paspirtukas.color }}>COLOR: {paspirtukas.color}</b>
+          <br />
+          <b className="color-svg">
+            Color:
+            <svg style={{ fill: paspirtukas.color }}>
+              <use href="#deme" />
+            </svg>{' '}
+          </b>
         </div>
         <div className="busy">
           <b>{paspirtukas.isBusy ? 'Available' : 'Busy'}</b>

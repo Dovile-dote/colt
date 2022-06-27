@@ -7,7 +7,7 @@ function List() {
 
   return (
     <>
-      <div className="flex">
+      <div className="colors-list">
         <h2>List of Colors</h2>
         <ul>
           {colors

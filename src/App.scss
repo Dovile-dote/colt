@@ -8,7 +8,6 @@ $spalva2: rgb(193, 24, 78);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    // backdrop-filter: blur(60px);
     font-family: 'Play', sans-serif;
 }
 
@@ -53,7 +52,7 @@ $spalva2: rgb(193, 24, 78);
         // border: 2px solid purple;
         width: 80%;
         display: flex;
-        align-items: center;
+        // align-items: center;
         justify-content: center;
 
         .order {
@@ -115,8 +114,23 @@ $spalva2: rgb(193, 24, 78);
                 }
             }
 
+            .selektas {
+                margin-bottom: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
-            button {
+                select {
+                    border: 4px solid black;
+                    border-radius: 14px;
+                    font-size: 20px;
+                    font-weight: bold;
+                    padding: 20px;
+                    background-color: rgba(255, 255, 255, 0.286);
+                }
+            }
+
+            .pagr {
                 text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
                 border: 4px solid black;
                 box-shadow: 0 0 20px #fff;
@@ -171,6 +185,81 @@ $spalva2: rgb(193, 24, 78);
                     font-size: 30px;
                 }
             }
+
+            .color {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border: 3px solid black;
+                background-color: rgba(255, 255, 255, 0.5);
+                border-radius: 18px;
+                margin-top: 40px;
+                width: 80%;
+                padding: 10px;
+
+                input {
+                    width: 100px;
+                    height: 100px;
+                }
+
+                button {
+                    margin: 10px;
+                    text-transform: uppercase;
+                }
+            }
+
+            .colors-list {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border: 3px solid black;
+                background-color: rgba(255, 255, 255, 0.5);
+                border-radius: 18px;
+                margin-top: 40px;
+                width: 80%;
+                padding: 10px;
+
+                ul {
+                    list-style: none;
+                    padding-left: 0;
+                    width: 90%;
+                }
+
+                .colors-aprasas {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .spalva {
+                        width: 30px;
+                        height: 30px;
+                        border: 2px solid black;
+                        border-radius: 50%;
+                        margin: 5px;
+                    }
+
+                    button {
+                        width: 35px;
+                        height: 35px;
+                        padding: 0;
+                        border: none;
+                        box-shadow: 0 0 8px red;
+
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                            fill: red;
+                        }
+                    }
+
+                    b {
+                        margin-right: 5px;
+                    }
+                }
+            }
+
         }
 
         .nera {
@@ -257,6 +346,14 @@ $spalva2: rgb(193, 24, 78);
                             }
                         }
 
+                        .color-svg {
+                            svg {
+                                width: 30px;
+                                height: 30px;
+                                margin-left: 20px;
+                                margin-top: 10px;
+                            }
+                        }
 
                         .buttons {
                             button {
@@ -287,10 +384,6 @@ $spalva2: rgb(193, 24, 78);
                     }
                 }
             }
-        }
-
-        .color {
-            border: 3px dodgerblue dotted;
         }
     }
 
@@ -374,4 +467,79 @@ $spalva2: rgb(193, 24, 78);
     width: 100%;
     height: 100%;
     background-color: rgba(23, 50, 96, 0.469);
+}
+
+.front {
+    .main {
+        // border: 2px solid pink;
+
+        .order {
+            border: 3px solid black;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 18px;
+            width: 50%;
+            // display: block;
+            // text-align: center;
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    border-bottom: 1px solid black;
+                    // width: 300px;
+                    margin-bottom: 20px;
+
+                    .spalvu-sarasas {
+                        display: flex;
+
+                        svg {
+                            width: 60px;
+                            height: 60px;
+                            margin: 5px;
+                        }
+
+                        ul {
+                            margin-left: 30px;
+                            font-weight: bold;
+
+                            li {
+                                margin-bottom: 0;
+                                border: none;
+                                color: #fff;
+                                font-size: 20px;
+                                text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+        }
+
+        .list {
+
+            .comment-place {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                textarea {
+                    border: 2px solid black;
+                    border-radius: 8px;
+                    background-color: transparent;
+                    margin-bottom: 20px;
+                }
+
+
+            }
+
+            ul {
+                margin-top: 30px;
+            }
+
+        }
+    }
 }

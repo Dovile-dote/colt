@@ -10,22 +10,17 @@ function Color({ color }) {
 
   return (
     <li>
-      <div className="aprasas">
-        <div>
-          <p>
-            {' '}
-            <b>{color.color}. </b>
-          </p>
-        </div>
+      <div className="colors-aprasas">
+        <div className="spalva" style={{ backgroundColor: color.color }}></div>
+
         <div className="buttons">
           {color.total ? (
-            '(' + color.total + ')'
+            <b>{'(' + color.total + ')'}</b>
           ) : (
             <button className="delete" onClick={handleDelete}>
-              {/* <svg>
-              <use href="#delete" />
-            </svg> */}
-              DELETE
+              <svg>
+                <use href="#delete" />
+              </svg>
             </button>
           )}
         </div>

@@ -16,11 +16,10 @@ function Create() {
   return (
     <>
       <div className="color">
-        <h2>Add new color</h2>
-        <label>Color</label>
+        <h2>Create new color</h2>
         <input
-          type="text"
-          onChange={(e) => setColor(e.target.value)}
+          type="color"
+          onChange={(e) => setColor(String(e.target.value))}
           value={color}
         />
         <button onClick={handleCreate}>
