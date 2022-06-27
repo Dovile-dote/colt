@@ -18,12 +18,16 @@ function Color({ color }) {
           </p>
         </div>
         <div className="buttons">
-          <button className="delete" onClick={handleDelete}>
-            {/* <svg>
+          {color.total ? (
+            '(' + color.total + ')'
+          ) : (
+            <button className="delete" onClick={handleDelete}>
+              {/* <svg>
               <use href="#delete" />
             </svg> */}
-            DELETE
-          </button>
+              DELETE
+            </button>
+          )}
         </div>
       </div>
     </li>

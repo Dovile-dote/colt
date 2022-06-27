@@ -1,25 +1,23 @@
-import { useContext } from 'react';
-import ColtContext from './ColtContext';
+import { useContext, useState } from 'react';
+import FrontContext from './FrontContext';
 
 function Pasp({ paspirtukas }) {
-  const { setDeleteData, setModalData } = useContext(ColtContext);
+  const { setCreateComment } = useContext(FrontContext);
 
-  const handleDelete = () => {
-    setDeleteData(paspirtukas);
+  const [com, setCom] = useState('');
+
+  const handleComment = () => {
+    setCreateComment({ com, coltId: paspirtukas.id });
+    setCom('');
   };
 
-  const handleEdit = () => {
-    setModalData(paspirtukas);
-  };
-
-  // console.log(paspirtukas);
   return (
     <li>
       <div className="aprasas">
         <div>
           <p>
             {' '}
-            <b>{paspirtukas.id}. </b>
+            {/* <b>{paspirtukas.id}. </b> */}
             <b>Registration code: {paspirtukas.registrationCode}</b>
           </p>
           <p>
@@ -36,19 +34,23 @@ function Pasp({ paspirtukas }) {
             className={paspirtukas.isBusy ? 'burbuliukas' : 'burbuliukas-busy'}
           ></div>
         </div>
-
+        <textarea
+          value={com}
+          onChange={(e) => setCom(e.target.value)}
+        ></textarea>
         <div className="buttons">
-          <button onClick={handleEdit}>
-            <svg>
-              <use href="#edit" />
-            </svg>
-          </button>
-          <button className="delete" onClick={handleDelete}>
-            <svg>
-              <use href="#delete" />
-            </svg>
+          <button className="delete" onClick={handleComment}>
+            COMMENT
           </button>
         </div>
+        <ul>
+          {paspirtukas.comments
+            ? paspirtukas.comments
+                .slice(0, -5)
+                .split('-^o^-')
+                .map((c, i) => <li key={i}>{c}</li>)
+            : null}
+        </ul>
       </div>
     </li>
   );
