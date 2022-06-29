@@ -11,48 +11,61 @@ function Pasp({ paspirtukas }) {
     setCom('');
   };
 
+  console.log(paspirtukas);
+
   return (
     <li>
       <div className="aprasas">
-        <div>
-          <p>
-            <b>{paspirtukas.registrationCode}</b>
-          </p>
-          <p>
-            <b>Last use time: {paspirtukas.lastUseTime}</b>
-          </p>
-
-          <b className="color-svg">
+        <div className="flex">
+          <b className="colt-nr color-svg">
+            <span id={paspirtukas.registrationCode}>Colt: </span>{' '}
+            {paspirtukas.registrationCode}
+            {/* </b> */}
+            {/* <b className="color-svg"> */}
             <svg style={{ fill: paspirtukas.color }}>
               <use href="#deme" />
             </svg>{' '}
           </b>
-          <div className="busy">
-            <b>{paspirtukas.isBusy ? 'Available' : 'Busy'}</b>
+          <div className="busy colt-nr">
             <div
               className={
                 paspirtukas.isBusy ? 'burbuliukas' : 'burbuliukas-busy'
               }
-            ></div>
+            ></div>{' '}
+            <b
+              style={{
+                marginLeft: paspirtukas.isBusy ? '10px' : '35px',
+                marginRight: '20px',
+              }}
+            >
+              {paspirtukas.isBusy ? 'Available' : 'Busy'}
+            </b>
           </div>
-        </div>
+        </div>{' '}
+        <ul className="komentarai">
+          {paspirtukas.comments
+            ? paspirtukas.comments
+                .slice(0, -5)
+                .split('-^o^-,')
+                .map((c, i) => (
+                  <li key={i}>
+                    <div className="komentaras">{c}</div>
+                  </li>
+                ))
+            : null}
+        </ul>
         <div className="comment-place">
           <textarea
             value={com}
             onChange={(e) => setCom(e.target.value)}
-            rows="5"
+            rows="7"
+            placeholder="Leave your comment here..."
           ></textarea>
-          <button onClick={handleComment}>COMMENT</button>
+          <button className="com" onClick={handleComment}>
+            <span>COMMENT</span>
+          </button>
         </div>
       </div>
-      <ul>
-        {paspirtukas.comments
-          ? paspirtukas.comments
-              .slice(0, -5)
-              .split('-^o^-,')
-              .map((c, i) => <li key={i}>{c}</li>)
-          : null}
-      </ul>
     </li>
   );
 }

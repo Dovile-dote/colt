@@ -2,15 +2,19 @@ import { useContext } from 'react';
 import ColtContext from './ColtContext';
 
 function Pasp({ paspirtukas }) {
-  const { setDeleteData, setModalData } = useContext(ColtContext);
+  const { setDeleteData, setModalData, handleDeleteComment } =
+    useContext(ColtContext);
 
   const handleDelete = () => {
     setDeleteData(paspirtukas);
+    console.log(paspirtukas);
   };
 
   const handleEdit = () => {
     setModalData(paspirtukas);
   };
+
+  // console.log(paspirtukas);
 
   // console.log(paspirtukas);
   return (
@@ -55,6 +59,29 @@ function Pasp({ paspirtukas }) {
           </button>
         </div>
       </div>
+      <ul>
+        {paspirtukas.comments
+          ? paspirtukas.comments
+              .slice(0, -5)
+              .split('-^o^-,')
+              .map((c, i) => (
+                <li key={i}>
+                  <div className="komentaras">{c}</div>
+                  <button
+                    className="delete-kom"
+                    type="button"
+                    onClick={() =>
+                      handleDeleteComment(paspirtukas.coms_id.split(',')[i])
+                    }
+                  >
+                    <svg>
+                      <use href="#delete" />
+                    </svg>
+                  </button>
+                </li>
+              ))
+          : null}
+      </ul>
     </li>
   );
 }

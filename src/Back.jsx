@@ -25,7 +25,7 @@ function Back() {
   const [colorsCreateData, setColorsCreateData] = useState(null);
   const [colorsDeleteData, setColorsDeleteData] = useState(null);
 
-  ///////////////////PASAPIRTUKAI/////////////////////
+  ///////////////////PASPIRTUKAI/////////////////////
   // read
   useEffect(() => {
     axios
@@ -60,6 +60,7 @@ function Back() {
   }, [editData]);
 
   ////////////////////SPALVOS///////////////////////
+
   // create colors
   useEffect(() => {
     if (null === colorsCreateData) return;
@@ -71,12 +72,12 @@ function Back() {
   // read colors
   useEffect(() => {
     axios.get('http://localhost:3003/spalvos').then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setColors(res.data);
     });
   }, [lastUpdate]);
 
-  // delete colors
+  // delete color
   useEffect(() => {
     if (null === colorsDeleteData) return;
     axios
@@ -85,6 +86,13 @@ function Back() {
         setLastUpdate(Date.now());
       });
   }, [colorsDeleteData]);
+
+  // delete comment
+  const handleDeleteComment = (id) => {
+    axios.delete('http://localhost:3003/komentarai/' + id).then((_) => {
+      setLastUpdate(Date.now());
+    });
+  };
 
   //////////////KITA/////////////////////
   // statistic
@@ -106,6 +114,7 @@ function Back() {
         modalData,
         setEditData,
         colors,
+        handleDeleteComment,
       }}
     >
       <ColorContext.Provider

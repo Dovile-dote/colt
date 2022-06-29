@@ -17,6 +17,7 @@ function Create() {
     <>
       <div className="color">
         <h2>Create new color</h2>
+
         <input
           type="color"
           onChange={(e) => setColor(String(e.target.value))}

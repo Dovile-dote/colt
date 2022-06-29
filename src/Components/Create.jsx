@@ -54,6 +54,7 @@ function Create() {
   const [lastUseTime, setLastUseTime] = useState('');
   const [totalRideKilometres, setTotalRideKilometres] = useState(0);
   const [color, setColor] = useState('0');
+  const [radio, setRadio] = useState('0');
 
   const handleCreate = () => {
     const data = {
@@ -69,6 +70,7 @@ function Create() {
     setLastUseTime('');
     setTotalRideKilometres(0);
     setColor('0');
+    setRadio('0');
   };
 
   return (
@@ -82,9 +84,39 @@ function Create() {
         </div>
         <div className="tr"></div>
       </div>
-      <div>
-        <div className="selektas">
-          <select onChange={(e) => setColor(e.target.value)} value={color}>
+      <div className="selektas">
+        <input
+          type="radio"
+          name="r"
+          value="0"
+          onChange={(e) => setRadio(e.target.value)}
+          checked={radio === '0'}
+          disabled
+        ></input>
+        {colors
+          ? colors.map((c) => (
+              <>
+                <input
+                  key={c.id}
+                  type="radio"
+                  name="r"
+                  id={c.id}
+                  value={c.color}
+                  onChange={(e) => (
+                    setRadio(e.target.value), setColor(c.id), console.log(radio)
+                  )}
+                  checked={radio === String(c.color)}
+                ></input>
+                <label htmlFor={c.id}>
+                  <svg style={{ fill: c.color }}>
+                    <use href="#deme" />
+                  </svg>{' '}
+                </label>
+              </>
+            ))
+          : null}
+
+        {/* <select onChange={(e) => setColor(e.target.value)} value={color}>
             <option value="0" disabled>
               Select Color
             </option>
@@ -95,12 +127,15 @@ function Create() {
                   </option>
                 ))
               : null}
-          </select>
-        </div>
-        <button className="pagr" onClick={handleCreate}>
-          <span>NEW COLT</span>
-        </button>
+          </select> */}
       </div>
+      <div
+        className="current-color"
+        style={{ backgroundColor: radio == 0 ? 'transparent' : radio }}
+      ></div>
+      <button className="pagr" onClick={handleCreate}>
+        <span>NEW COLT</span>
+      </button>
     </>
   );
 }

@@ -1,4 +1,5 @@
 function Color({ color }) {
+  console.log(color);
   return (
     <li>
       <div className="spalvu-sarasas">
@@ -7,9 +8,13 @@ function Color({ color }) {
             <use href="#deme" />
           </svg>{' '}
         </b>
-        <ul className="ul-flex">
+        <ul>
           {color.pasp_nr
-            ? color.pasp_nr.split(',').map((c, i) => <li key={i}>{c}</li>)
+            ? color.pasp_nr.split(',').map((c, i) => (
+                <li key={i}>
+                  <a href={'#' + c}>{c}</a>
+                </li>
+              ))
             : null}
         </ul>
       </div>
